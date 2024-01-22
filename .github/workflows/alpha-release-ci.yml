@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
       - uses: actions/checkout@v2
@@ -18,7 +18,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v2
         with:
-          node-version: "16"
+          node-version: "20"
       - uses: actions/cache@v2
         with:
           path: ~/.npm
@@ -32,23 +32,13 @@ jobs:
       - name: Lint
         run: npx nx run-many --target=lint --all
       - name: Test
-        run: npx nx run-many --target=test --all
+        run: npm run test
       - name: Build
         run: |
           npx nx run-many --target=build --all --prod --with-deps
           npx nx run-many --target=post --all
       - name: Update VsCode documentation
         run: npm run build:vscode-doc
-      - name: Build Storybooks
-        run: |
-          npm run build:docs-storybook
-          cp nginx.conf dist/storybook
-      - name: Publish to Chromatic
-        uses: chromaui/action@v1
-        with:
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          storybookBuildDir: dist/storybook/docs
-          exitOnceUploaded: true
       - name: Oc login
         uses: redhat-actions/oc-login@v1
         with:
@@ -64,10 +54,12 @@ jobs:
 
           # Optional - this sets your Kubernetes context's current namespace after logging in.
           namespace: ui-components-build
-      - name: Start Build
-        run: oc start-build ui-components-alpha --from-dir dist/storybook --follow --wait
       - name: Update Web components documentation
         run: cp libs/web-components/README.md dist/libs/web-components
+
+      - name: Remove types file for now
+        run: rm dist/libs/web-components/index.d.ts
+
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
@@ -76,7 +68,7 @@ jobs:
 
   deployDev:
     # The type of runner that the job will run on
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     needs: build
     environment:
       name: Dev
