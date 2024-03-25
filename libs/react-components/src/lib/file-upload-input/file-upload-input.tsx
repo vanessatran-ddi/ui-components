@@ -1,6 +1,5 @@
+import { GoAFileUploadInputOnSelectFileDetail, GoAFileUploadInputVariant } from "@abgov/common";
 import { useEffect, useRef } from "react";
-
-export type GoAFileUploadInputVariant = "dragdrop" | "button";
 
 interface WCProps {
   ref: React.MutableRefObject<HTMLElement | null>;
@@ -24,7 +23,7 @@ export interface GoAFileUploadInputProps {
   variant?: GoAFileUploadInputVariant;
   accept?: string;
   maxFileSize?: string;
-  onSelectFile: (file: File) => void;
+  onSelectFile: (detail: GoAFileUploadInputOnSelectFileDetail) => void;
 }
 
 export function GoAFileUploadInput({
@@ -40,7 +39,8 @@ export function GoAFileUploadInput({
 
     const current = el.current;
     const handler = (e: Event) => {
-      onSelectFile((e as CustomEvent).detail.file);
+      const detail = (e as CustomEvent<GoAFileUploadInputOnSelectFileDetail>).detail;
+      onSelectFile(detail);
     };
     current.addEventListener("_selectFile", handler);
     return () => {

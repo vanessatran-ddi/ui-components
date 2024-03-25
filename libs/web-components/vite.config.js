@@ -6,10 +6,20 @@ import { nxViteTsPaths } from "@nx/vite/plugins/nx-tsconfig-paths.plugin";
 import { svelte } from "@sveltejs/vite-plugin-svelte";
 import autoprefixer from "autoprefixer";
 import { postcssReplace } from "./utils/postcss-replace";
+import { fileURLToPath } from "url";
 
 export default defineConfig(() => ({
   root: __dirname,
   cacheDir: "../../node_modules/.vite/libs/web-components",
+
+  resolve: {
+    alias: [
+      {
+        find: "@abgov/common",
+        replacement: fileURLToPath(new URL("../common", import.meta.url)),
+      },
+    ]
+  },
 
   css: {
     postcss: {

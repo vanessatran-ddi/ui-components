@@ -1,10 +1,10 @@
+import { GoABlockAlignment, GoABlockDirection, Margins, Spacing } from "@abgov/common";
 import { ReactNode } from "react";
-import { Alignment, Direction, Margins, Spacing } from "../../common/styling";
 
 export interface WCProps extends Margins {
   gap?: Spacing;
-  direction?: Direction;
-  alignment?: Alignment;
+  direction?: GoABlockDirection;
+  alignment?: GoABlockAlignment;
 }
 
 declare global {
@@ -20,14 +20,11 @@ declare global {
 /* eslint-disable-next-line */
 export interface GoABlockProps extends Margins {
   gap?: Spacing;
-  direction?: Direction;
-  alignment?: Alignment;
+  direction?: GoABlockDirection;
+  alignment?: GoABlockAlignment;
   testId?: string;
   children?: ReactNode;
 }
-
-// legacy
-export type BlockProps = GoABlockProps;
 
 export function GoABlock(props: GoABlockProps) {
   return (

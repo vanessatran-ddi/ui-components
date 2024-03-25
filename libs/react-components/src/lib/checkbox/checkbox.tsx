@@ -1,5 +1,5 @@
+import { GoACheckboxOnChangeDetail, Margins } from "@abgov/common";
 import { useEffect, useRef } from "react";
-import { Margins } from "../../common/styling";
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -36,7 +36,7 @@ export interface GoACheckboxProps extends Margins {
   testId?: string;
   ariaLabel?: string;
   description?: string | React.ReactNode;
-  onChange?: (name: string, checked: boolean, value: string) => void;
+  onChange?: (detail: GoACheckboxOnChangeDetail) => void;
 }
 
 // legacy
@@ -66,9 +66,9 @@ export function GoACheckbox({
       return;
     }
     const current = el.current;
-    const listener = (e: unknown) => {
-      const ce = e as CustomEvent;
-      onChange?.(name, ce.detail.checked, ce.detail.value);
+    const listener = (e: Event) => {
+      const detail = (e as CustomEvent<GoACheckboxOnChangeDetail>).detail;
+      onChange?.(detail);
     };
 
     current.addEventListener("_change", listener);

@@ -1,9 +1,9 @@
-import { Spacing } from "../../common/styling";
+import { GoASpacerHorizontalSpacing, GoASpacerVerticalSpacing } from "@abgov/common";
 
 /* eslint-disable-next-line */
 interface WCProps {
-  hspacing?: Spacing | "fill";
-  vspacing?: Spacing;
+  hspacing?: GoASpacerHorizontalSpacing;
+  vspacing?: GoASpacerVerticalSpacing;
 }
 
 declare global {
@@ -17,12 +17,10 @@ declare global {
 
 /* eslint-disable-next-line */
 export interface GoASpacerProps {
-  hSpacing?: Spacing | "fill";
-  vSpacing?: Spacing;
+  hSpacing?: GoASpacerHorizontalSpacing;
+  vSpacing?: GoASpacerVerticalSpacing;
   testId?: string;
 }
-
-export type SpacerProps = GoASpacerProps;
 
 export function GoASpacer(props: GoASpacerProps) {
   return (

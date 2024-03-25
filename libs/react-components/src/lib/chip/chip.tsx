@@ -1,7 +1,5 @@
+import { GoAChipVariant, Margins } from "@abgov/common";
 import { useEffect, useRef } from "react";
-import { Margins } from "../../common/styling";
-
-export type GoAChipVariant = "filter";
 
 interface WCProps extends Margins {
   ref: React.RefObject<HTMLElement>;

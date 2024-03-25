@@ -1,16 +1,5 @@
+import { GoAModalCalloutVariant, GoAModalTransition } from "@abgov/common";
 import { ReactElement, ReactNode, RefObject, useEffect, useRef } from "react";
-
-export type GoAModalTransition = "fast" | "slow" | "none";
-export type GoAModalCalloutVariant =
-  | "information"
-  | "important"
-  | "emergency"
-  | "success"
-  | "event";
-
-// leagcy type names
-export type ModalTransition = GoAModalTransition;
-export type CalloutVariant = GoAModalCalloutVariant;
 
 interface WCProps {
   ref: RefObject<HTMLElement>;
@@ -41,11 +30,6 @@ export interface GoAModalProps {
   open?: boolean;
   calloutVariant?: GoAModalCalloutVariant;
   testId?: string;
-
-  // @deprecated: use maxWidth
-  width?: string;
-  // @deprecated: use variant
-  type?: string;
 }
 
 export function GoAModal({
@@ -55,27 +39,11 @@ export function GoAModal({
   open,
   actions,
   transition,
-  type,
   calloutVariant,
   onClose,
   testId,
-
-  width,
 }: GoAModalProps): JSX.Element {
   const el = useRef<HTMLElement>(null);
-
-  // @deprecated
-  useEffect(() => {
-    if (type) {
-      console.warn("GoAModal [type] is deprecated.");
-    }
-  }, [type]);
-
-  // @deprecated
-  useEffect(() => {
-    // @ts-expected-error: deprecated
-    maxWidth = width;
-  }, [width]);
 
   useEffect(() => {
     if (!el.current) {

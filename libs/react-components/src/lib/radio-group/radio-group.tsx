@@ -1,9 +1,8 @@
 import { useEffect, useRef } from "react";
-import { Margins } from "../../common/styling";
+import { GoARadioGroupOnChangeDetail, GoARadioGroupOrientation, Margins } from "@abgov/common";
 
 export * from "./radio";
 
-export type GoARadioGroupOrientation = "horizontal" | "vertical";
 
 interface WCProps extends Margins {
   ref: React.RefObject<HTMLElement>;
@@ -33,7 +32,7 @@ export interface GoARadioGroupProps extends Margins {
   error?: boolean;
   ariaLabel?: string;
   children?: React.ReactNode;
-  onChange: (name: string, value: string) => void;
+  onChange: (detail: GoARadioGroupOnChangeDetail) => void;
 }
 
 export function GoARadioGroup({
@@ -55,18 +54,20 @@ export function GoARadioGroup({
   const el = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    if (!el.current) {
-      return;
-    }
-    const listener = (e: unknown) => {
+    if (!el.current) return
+
+    const listener = (e: Event) => {
       if (!onChange) {
         console.warn("Missing onChange function");
         return;
       }
-      onChange(name, (e as CustomEvent).detail.value);
+      const detail = (e as CustomEvent<GoARadioGroupOnChangeDetail>).detail;
+      onChange(detail);
     };
+
     const currentEl = el.current;
     currentEl.addEventListener("_change", listener);
+
     return () => {
       currentEl.removeEventListener("_change", listener);
     };

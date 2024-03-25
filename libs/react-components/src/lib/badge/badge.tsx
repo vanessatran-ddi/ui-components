@@ -1,13 +1,4 @@
-import { Margins } from "../../common/styling";
-
-export type GoABadgeType =
-  | "information"
-  | "success"
-  | "important"
-  | "emergency"
-  | "dark"
-  | "midtone"
-  | "light";
+import { GoABadgeType, Margins } from "@abgov/common";
 
 interface WCProps extends Margins {
   type: GoABadgeType;

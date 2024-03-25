@@ -1,5 +1,5 @@
+import { Margins } from "@abgov/common";
 import { ReactNode } from "react";
-import { Margins } from "../../common/styling";
 
 interface WCProps extends Margins {
   current?: number;

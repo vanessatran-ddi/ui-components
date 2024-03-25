@@ -1,9 +1,4 @@
-export type GoACircularProgressVariant = "fullscreen" | "inline";
-export type GoACircularProgressSize = "small" | "large";
-
-// legacy naming
-export type CircularProgressVariant = GoACircularProgressVariant;
-export type CircularProgressSize = GoACircularProgressSize;
+import { GoACircularProgressSize, GoACircularProgressVariant } from "@abgov/common";
 
 interface WCProps {
   variant?: GoACircularProgressVariant;

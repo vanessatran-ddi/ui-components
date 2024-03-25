@@ -2,6 +2,7 @@ import { render } from "@testing-library/react";
 import { fireEvent } from "@testing-library/dom";
 import GoACheckbox, { Props as CheckboxProps } from "./checkbox";
 import { describe, it, expect, vi } from "vitest";
+import { GoACheckboxOnChangeDetail } from "@abgov/common";
 
 const testId = "test-id";
 
@@ -60,7 +61,7 @@ describe("GoA Checkbox", () => {
   it("should handle the onChange event", async function () {
     const onChangeStub = vi.fn();
 
-    function onChange(name: string, checked: boolean, value: string) {
+    function onChange({name, value, checked}: GoACheckboxOnChangeDetail) {
       expect(name).toBe("foo");
       expect(value).toBe("bar");
       expect(checked).toBeTruthy();
@@ -84,7 +85,7 @@ describe("GoA Checkbox", () => {
 
     checkbox && fireEvent(
       checkbox,
-      new CustomEvent("_change", { detail: { value: "bar", checked: true } })
+      new CustomEvent("_change", { detail: { name: "foo", value: "bar", checked: true } })
     );
     expect(onChangeStub).toBeCalled();
   });

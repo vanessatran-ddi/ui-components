@@ -1,9 +1,8 @@
-export type SpinnerType = "infinite" | "progress";
-export type SpinnerSize = "small" | "medium" | "large" | "xlarge";
+import { GoASpinnerSize, GoASpinnerType } from "@abgov/common";
 
 interface WCProps {
-  size: SpinnerSize;
-  type: SpinnerType;
+  size: GoASpinnerSize;
+  type: GoASpinnerType;
   invert?: boolean;
   progress?: number;
 }
@@ -18,8 +17,8 @@ declare global {
 }
 
 export interface GoASpinnerProps {
-  type: SpinnerType;
-  size: SpinnerSize;
+  type: GoASpinnerType;
+  size: GoASpinnerSize;
   invert?: boolean;
   progress?: number;
   testId?: string;

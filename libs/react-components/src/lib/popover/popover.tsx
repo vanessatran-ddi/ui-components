@@ -1,12 +1,10 @@
+import { GoAPopoverPosition, Margins } from "@abgov/common";
 import { ReactNode } from "react";
-import { Margins } from "../../common/styling";
-
-export type GoAPosition = "above" | "below" | "auto";
 
 interface WCProps extends Margins {
   maxwidth?: string;
   padded?: boolean;
-  position?: GoAPosition;
+  position?: GoAPopoverPosition;
   relative?: boolean;
 }
 
@@ -24,7 +22,7 @@ export interface GoAPopoverProps extends Margins {
   testId?: string;
   maxWidth?: string;
   padded?: boolean;
-  position?: GoAPosition;
+  position?: GoAPopoverPosition;
   children: ReactNode;
   relative?: boolean;
 }

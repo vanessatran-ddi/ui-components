@@ -1,7 +1,4 @@
-import { Margins } from "../../common/styling";
-
-export type GoAFormItemRequirement = "optional" | "required";
-export type GoAFormItemLabelSize = "regular" | "large";
+import { GoAFormItemLabelSize, GoAFormItemRequirement, Margins } from "@abgov/common";
 
 interface WCProps extends Margins {
   label?: string;

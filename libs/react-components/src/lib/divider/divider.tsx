@@ -1,4 +1,4 @@
-import { Margins } from "../../common/styling";
+import { Margins } from "@abgov/common";
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace

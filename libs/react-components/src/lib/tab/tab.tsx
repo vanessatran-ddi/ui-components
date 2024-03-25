@@ -16,8 +16,6 @@ export interface GoATabItemProps {
   children?: React.ReactNode;
 }
 
-export type TabItemProps = GoATabItemProps;
-
 export function GoATab({ heading, children }: GoATabItemProps): JSX.Element {
   return (
     <goa-tab>

@@ -1,22 +1,4 @@
-import { Margins } from "../../common/styling";
-
-export type GoASkeletonType =
-  | "image"
-  | "text"
-  | "title"
-  | "text-small"
-  | "avatar"
-  | "header"
-  | "paragraph"
-  | "thumbnail"
-  | "card"
-  | "profile"
-  | "article";
-
-export type GoASkeletonSize = 1 | 2 | 3 | 4;
-
-// legacy naming
-export type SkeletonType = GoASkeletonType;
+import { GoASkeletonSize, GoASkeletonType, Margins } from "@abgov/common";
 
 interface WCProps extends Margins {
   maxwidth?: string;

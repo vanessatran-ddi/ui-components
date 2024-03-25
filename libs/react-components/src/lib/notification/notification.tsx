@@ -1,15 +1,5 @@
+import { GoAAriaLiveType, GoANotificationType } from "@abgov/common";
 import { useEffect, useRef } from "react";
-
-export type GoANotificationType =
-  | "important"
-  | "information"
-  | "event"
-  | "emergency";
-
-export type GoAAriaLiveType = "polite" | "assertive" | "off";
-
-export type NotificationType = GoANotificationType;
-export type AriaLiveType = GoAAriaLiveType;
 
 interface WCProps {
   ref: React.RefObject<HTMLElement>;

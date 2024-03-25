@@ -1,32 +1,6 @@
 import { useEffect, useRef } from "react";
-import { GoAIconType } from "../..";
 import { format, isValid, parseISO } from "date-fns";
-import { Margins } from "../../common/styling";
-
-export type GoADate = Date | string;
-
-export type GoAInputType =
-  | "text"
-  | "password"
-  | "email"
-  | "number"
-  | "date"
-  | "datetime-local"
-  | "month"
-  | "range"
-  | "search"
-  | "tel"
-  | "time"
-  | "url"
-  | "week";
-
-export type GoAAutoCapitalize =
-  | "on"
-  | "off"
-  | "none"
-  | "sentences"
-  | "words"
-  | "characters";
+import { GoAAutoCapitalize, GoADate, GoAIconType, GoAInputOnBlurDetail, GoAInputOnChangeDetail, GoAInputOnFocusDetail, GoAInputOnKeyPressDetail, GoAInputType, Margins } from "@abgov/common";
 
 interface WCProps extends Margins {
   ref?: React.MutableRefObject<HTMLInputElement | null>;
@@ -93,10 +67,10 @@ interface BaseProps extends Margins {
   maxLength?: number;
 }
 
-type OnChange<T = string> = (name: string, value: T) => void;
-type OnFocus<T = string> = (name: string, value: T) => void;
-type OnBlur<T = string> = (name: string, value: T) => void;
-type OnKeyPress<T = string> = (name: string, value: T, key: string) => void;
+type OnChange<T = string> = (detail: GoAInputOnChangeDetail<T>) => void;
+type OnFocus<T = string> = (detail: GoAInputOnFocusDetail<T>) => void;
+type OnBlur<T = string> = (detail: GoAInputOnBlurDetail<T>) => void;
+type OnKeyPress<T = string> = (detail: GoAInputOnKeyPressDetail<T>) => void;
 
 export interface GoAInputProps extends BaseProps {
   onChange: OnChange<string>;
@@ -173,27 +147,27 @@ export function GoAInput({
       return;
     }
     const current = ref.current;
-    const changeListener = (e: unknown) => {
-      const { name, value } = (e as CustomEvent).detail;
-      onChange(name, value);
+    const changeListener = (e: Event) => {
+      const detail = (e as CustomEvent<GoAInputOnChangeDetail>).detail;
+      onChange(detail);
     };
     const clickListener = () => {
       onTrailingIconClick?.();
     };
 
-    const focusListener = (e: unknown) => {
-      const { name, value } = (e as CustomEvent).detail;
-      onFocus?.(name, value);
+    const focusListener = (e: Event) => {
+      const detail = (e as CustomEvent<GoAInputOnFocusDetail>).detail;
+      onFocus?.(detail);
     };
 
-    const blurListener = (e: unknown) => {
-      const { name, value } = (e as CustomEvent).detail;
-      onBlur?.(name, value);
+    const blurListener = (e: Event) => {
+      const detail = (e as CustomEvent<GoAInputOnBlurDetail>).detail;
+      onBlur?.(detail);
     };
 
-    const keypressListener = (e: unknown) => {
-      const { name, value, key } = (e as CustomEvent).detail;
-      onKeyPress?.(name, value, key);
+    const keypressListener = (e: Event) => {
+      const detail = (e as CustomEvent<GoAInputOnKeyPressDetail>).detail;
+      onKeyPress?.(detail);
     }
 
     current.addEventListener("_change", changeListener);
@@ -201,6 +175,7 @@ export function GoAInput({
     current.addEventListener("_focus", focusListener);
     current.addEventListener("_blur", blurListener);
     current.addEventListener("_keyPress", keypressListener);
+
     return () => {
       current.removeEventListener("_change", changeListener);
       current.removeEventListener("_trailingIconClick", clickListener);
@@ -249,25 +224,31 @@ export function GoAInput({
 }
 
 const onDateChangeHandler = (onChange: OnChange<GoADate>) => {
-  return (name: string, value: string) => {
-
+  return ({ name, value }: GoAInputOnChangeDetail<string | Date>) => {
     if (!value) {
-      onChange(name, "");
+      onChange({ name, value: "" });
       return;
     }
-    if (isValid(new Date(value))) {
-      onChange(name, parseISO(value));
+    // valid string date
+    if (typeof value === "string" && isValid(new Date(value))) {
+      onChange({ name, value: parseISO(value) });
+      return;
+    }
+    // valid date
+    if (isValid(value)) {
+      onChange({ name, value });
+      return;
     }
   };
 };
 
 const onTimeChangeHandler = (onChange: OnChange) => {
-  return (name: string, value: string) => {
+  return ({ name, value }: GoAInputOnChangeDetail) => {
     if (!value) {
-      onChange(name, "");
+      onChange({ name, value: "" });
       return;
     }
-    onChange(name, value);
+    onChange({ name, value });
   };
 };
 
@@ -364,7 +345,7 @@ export function GoAInputFile(props: GoAInputProps): JSX.Element {
       id={props.id}
       name={props.name}
       type="file"
-      onChange={(e) => props.onChange(e.target.name, e.target.value)}
+      onChange={(e) => props.onChange({ name: e.target.name, value: e.target.value })}
       style={{ backgroundColor: "revert" }}
     />
   );
@@ -380,17 +361,17 @@ export function GoAInputNumber({
   value,
   ...props
 }: GoANumberInputProps): JSX.Element {
-  const onNumberChange = (name: string, value: string) => {
-    props.onChange(name, parseFloat(value));
+  const onNumberChange = ({ name, value }: GoAInputOnChangeDetail) => {
+    props.onChange({ name, value: parseFloat(value) });
   };
-  const onFocus = (name: string, value: string) => {
-    props.onFocus?.(name, parseFloat(value));
+  const onFocus = ({ name, value }: GoAInputOnFocusDetail) => {
+    props.onFocus?.({ name, value: parseFloat(value) });
   };
-  const onBlur = (name: string, value: string) => {
-    props.onBlur?.(name, parseFloat(value));
+  const onBlur = ({ name, value }: GoAInputOnBlurDetail) => {
+    props.onBlur?.({ name, value: parseFloat(value) });
   };
-  const onKeyPress = (name: string, value: string, key: string) => {
-    props.onKeyPress?.(name, parseFloat(value), key);
+  const onKeyPress = ({ name, value, key }: GoAInputOnKeyPressDetail) => {
+    props.onKeyPress?.({ name, value: parseFloat(value), key: parseInt(key) });
   };
   return (
     <GoAInput

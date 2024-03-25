@@ -1,21 +1,5 @@
 import { ReactNode, useEffect, useRef } from "react";
-import { Margins } from "../../common/styling";
-import { GoAIconType } from "../icon/icon";
-
-export type GoAButtonType =
-  | "primary"
-  | "submit"
-  | "secondary"
-  | "tertiary"
-  | "start";
-
-export type GoAButtonSize = "compact" | "normal";
-export type GoAButtonVariant = "normal" | "destructive";
-
-// legacy type names
-export type ButtonType = GoAButtonType;
-export type ButtonSize = GoAButtonSize;
-export type ButtonVariant = GoAButtonVariant;
+import { GoAButtonSize, GoAButtonType, GoAButtonVariant, GoAIconType, Margins } from "@abgov/common";
 
 interface WCProps extends Margins {
   type?: GoAButtonType;

@@ -1,15 +1,5 @@
+import { GoAContainerAccent, GoAContainerPadding, GoAContainerType, Margins } from "@abgov/common";
 import { ReactNode } from "react";
-import { Margins } from "../../common/styling";
-
-export type GoAContainerType =
-  | "interactive"
-  | "non-interactive"
-  | "info"
-  | "error"
-  | "success"
-  | "important";
-export type GoAContainerAccent = "thick" | "thin" | "filled";
-export type GoAContainerPadding = "relaxed" | "compact";
 
 interface WCProps extends Margins {
   type?: GoAContainerType;

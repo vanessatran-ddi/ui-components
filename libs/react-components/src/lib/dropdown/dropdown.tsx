@@ -1,6 +1,5 @@
+import { GoADropdownOnChangeDetail, GoAIconType, Margins } from "@abgov/common";
 import { useEffect, useRef } from "react";
-import { Margins } from "../../common/styling";
-import { GoAIconType } from "../icon/icon";
 
 interface WCProps extends Margins {
   ref: React.MutableRefObject<HTMLElement | null>;
@@ -34,7 +33,7 @@ declare global {
 export interface GoADropdownProps extends Margins {
   name?: string;
   value?: string[] | string;
-  onChange: (name: string, values: string[] | string) => void;
+  onChange: (detail: GoADropdownOnChangeDetail) => void;
 
   // optional
   ariaLabel?: string;
@@ -71,9 +70,9 @@ export function GoADropdown(props: GoADropdownProps): JSX.Element {
       return;
     }
     const current = el.current;
-    const handler = (e: unknown) => {
-      const { name, value, values } = (e as CustomEvent).detail;
-      props.onChange(name, props.multiselect ? values : value);
+    const handler = (e: Event) => {
+      const detail = (e as CustomEvent<GoADropdownOnChangeDetail>).detail;
+      props.onChange(detail);
     };
     current.addEventListener("_change", handler);
     return () => {

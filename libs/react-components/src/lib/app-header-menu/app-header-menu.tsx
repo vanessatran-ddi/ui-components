@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { GoAIconType } from "../icon/icon";
+import { GoAIconType } from "@abgov/common";
 
 interface WCProps {
   heading: string;

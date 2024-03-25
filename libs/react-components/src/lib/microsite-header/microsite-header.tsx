@@ -1,3 +1,5 @@
+import { GoALinkTarget, GoAServiceLevel } from "@abgov/common";
+
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace JSX {
@@ -7,12 +9,6 @@ declare global {
     }
   }
 }
-
-export type GoAServiceLevel = "alpha" | "beta" | "live";
-export type GoALinkTarget = "self" | "blank";
-
-// leagcy type name
-export type ServiceLevel = GoAServiceLevel;
 
 interface WCProps {
   type: GoAServiceLevel;
@@ -32,9 +28,6 @@ export interface GoAHeaderProps {
   feedbackUrlTarget?: GoALinkTarget;
   headerUrlTarget?: GoALinkTarget;
 }
-
-// legacy name
-export type HeaderProps = GoAHeaderProps;
 
 export function GoAMicrositeHeader({
   type,

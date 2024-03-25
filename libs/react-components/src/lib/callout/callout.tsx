@@ -1,13 +1,4 @@
-import { Margins } from "../../common/styling";
-
-export type GoACalloutType =
-  | "important"
-  | "information"
-  | "event"
-  | "success"
-  | "emergency";
-
-export type GoACalloutSize = "medium" | "large";
+import { GoACalloutSize, GoACalloutType, Margins } from "@abgov/common";
 
 interface WCProps extends Margins {
   heading?: string;
@@ -31,8 +22,6 @@ export interface GoACalloutProps extends Margins {
   testId?: string;
   children?: React.ReactNode;
 }
-
-export type CalloutProps = GoACalloutProps;
 
 export const GoACallout = ({
   heading,

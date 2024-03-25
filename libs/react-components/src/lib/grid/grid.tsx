@@ -1,4 +1,4 @@
-import { Margins, Spacing } from "../../common/styling";
+import { Margins, Spacing } from "@abgov/common";
 
 interface WCProps extends Margins {
   gap?: Spacing;

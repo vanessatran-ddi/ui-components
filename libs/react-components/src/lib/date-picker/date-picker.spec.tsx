@@ -54,6 +54,6 @@ describe("DatePicker", () => {
       }),
     );
 
-    expect(onChange).toBeCalledWith(name, value);
+    expect(onChange).toBeCalledWith({ name, value, type: "date" });
   });
 });

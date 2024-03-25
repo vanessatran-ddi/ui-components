@@ -1,3 +1,4 @@
+import { GoAFileUploadOnCancelDetail, GoAFileUploadOnDeleteDetail } from "@abgov/common";
 import { useEffect, useRef } from "react";
 
 interface WCProps {
@@ -26,8 +27,8 @@ export interface GoAFileUploadCardProps {
   type?: string;
   progress?: number;
   error?: string;
-  onDelete?: () => void;
-  onCancel?: () => void;
+  onDelete?: (detail: GoAFileUploadOnDeleteDetail) => void;
+  onCancel?: (detail: GoAFileUploadOnCancelDetail) => void;
 }
 
 export function GoAFileUploadCard({
@@ -45,8 +46,8 @@ export function GoAFileUploadCard({
     if (!el.current) return;
 
     const current = el.current;
-    const deleteHandler = () => onDelete?.();
-    const cancelHandler = () => onCancel?.();
+    const deleteHandler = () => onDelete?.({ filename });
+    const cancelHandler = () => onCancel?.({ filename });
     current.addEventListener("_delete", deleteHandler);
     current.addEventListener("_cancel", cancelHandler);
     return () => {

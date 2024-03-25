@@ -1,3 +1,52 @@
+export function getSlottedChildren(rootEl: HTMLElement, parentTestSelector: string): Element[] {
+  const slot = rootEl.querySelector("slot");
+  if (slot) {
+    return slot.assignedElements();
+  } else {
+    // for unit tests only
+    // @ts-expect-error testing
+    return [...rootEl.querySelector(parentTestSelector).children] as Element[];
+  }
+
+}
+
+// export async function getSlottedChildren(rootEl: HTMLElement, parentTestSelector: string, timeout = 5000): Promise<Element[]> {
+//   const maxAttempts = timeout / 100;
+
+//   const getChildren = (): Element[] => {
+//     const slot = rootEl.querySelector("slot");
+//     if (slot) {
+//       return slot.assignedElements();
+//     } else {
+//       // for unit tests only
+//       // @ts-expect-error testing
+//       return [...rootEl.querySelector(parentTestSelector).children] as Element[];
+//     }
+//   }
+
+//   // immediate attempt
+//   let children = getChildren();
+//   if (children) {
+//     Promise.resolve(children);
+//   }
+
+//   return new Promise((resolve, reject) => {
+//     let children = null
+//     let attempts = 0;
+//     const intervalId = setInterval(() => {
+//       if (attempts > maxAttempts) {
+//         reject();
+//       }
+//       attempts++;
+//       children = getChildren();
+//       if (children.length > 0) {
+//         clearInterval(intervalId);
+//         resolve(children);
+//       }
+//     }, 100);
+//   })
+// }
+
 export function toBoolean(value: string): boolean {
   // this is how false will need to be represented
   if (value === "false") {

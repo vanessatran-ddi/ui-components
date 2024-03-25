@@ -1,6 +1,5 @@
+import { GoAIconType } from "@abgov/common";
 import { ReactNode } from "react";
-import { GoAIconType } from "../icon/icon";
-
 
 interface WCProps {
   icon?: GoAIconType;

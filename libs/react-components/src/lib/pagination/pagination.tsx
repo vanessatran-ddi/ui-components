@@ -1,5 +1,5 @@
+import { Margins } from "@abgov/common";
 import { useEffect, useRef } from "react";
-import { Margins } from "../../common/styling";
 
 interface WCProps extends Margins {
   ref?: React.MutableRefObject<HTMLElement | undefined>;

@@ -14,9 +14,6 @@ export interface GoAAppFooterMetaSectionProps {
   children?: ReactNode;
 }
 
-// legacy name
-export type FooterMetaSectionProps = GoAAppFooterMetaSectionProps;
-
 export function GoAAppFooterMetaSection({ children }: GoAAppFooterMetaSectionProps) {
   return (
     <goa-app-footer-meta-section slot="meta">

@@ -1,11 +1,5 @@
+import { GoAIconButtonVariant, GoAIconSize, GoAIconType, Margins } from "@abgov/common";
 import { useEffect, useRef } from "react";
-import { Margins } from "../../common/styling";
-import { GoAIconSize, GoAIconType } from "../icon/icon";
-
-export type GoAIconButtonVariant = "color" | "nocolor" | "dark" | "destructive";
-
-// legacy naming
-export type IconButtonVariant = GoAIconButtonVariant;
 
 interface WCProps extends Margins {
   ref: React.RefObject<HTMLElement>;

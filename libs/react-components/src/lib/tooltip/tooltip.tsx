@@ -1,8 +1,5 @@
+import { GoATooltipHorizontalAlignment, GoATooltipPosition, Margins } from "@abgov/common";
 import { ReactNode } from "react";
-import { Margins } from "../../common/styling";
-
-export type GoATooltipPosition = "top" | "bottom" | "left" | "right";
-export type GoATooltipHorizontalAlignment = "left" | "right" | "center";
 
 /* eslint-disable-next-line */
 interface WCProps extends Margins {

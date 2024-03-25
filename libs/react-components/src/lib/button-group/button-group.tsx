@@ -1,10 +1,4 @@
-import { Margins } from "../../common/styling";
-
-export type GoAButtonGroupAlignment = "start" | "end" | "center";
-export type GoAButtonGroupGap = "relaxed" | "compact";
-
-// legacy naming
-export type Gap = GoAButtonGroupGap;
+import { GoAButtonGroupAlignment, GoAButtonGroupGap, Margins } from "@abgov/common";
 
 interface WCProps extends Margins {
   alignment: GoAButtonGroupAlignment;

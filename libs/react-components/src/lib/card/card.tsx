@@ -1,4 +1,4 @@
-import { Margins } from "../../common/styling";
+import { Margins } from "@abgov/common";
 
 interface WCProps extends Margins {
   elevation?: number;

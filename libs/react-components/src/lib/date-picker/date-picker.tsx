@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Margins } from "../../common/styling";
+import { GoADatePickerOnChangeDetail, Margins } from "@abgov/common";
 
 interface WCProps extends Margins {
   ref: React.RefObject<HTMLElement>;
@@ -24,7 +24,7 @@ export interface GoADatePickerProps extends Margins {
   value?: Date;
   min?: Date;
   max?: Date;
-  onChange: (name: string, value: Date) => void;
+  onChange: (detail: GoADatePickerOnChangeDetail) => void;
 }
 
 export function GoADatePicker({
@@ -45,7 +45,8 @@ export function GoADatePicker({
     }
     const current = ref.current;
     current.addEventListener("_change", (e: Event) => {
-      onChange(name || "", (e as CustomEvent).detail.value);
+      const detail = (e as CustomEvent<GoADatePickerOnChangeDetail>).detail;
+      onChange(detail);
     });
   });
 

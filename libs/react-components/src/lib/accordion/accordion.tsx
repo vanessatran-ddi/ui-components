@@ -1,11 +1,10 @@
 import { ReactNode } from "react";
-import { Margins } from "../../common/styling";
 
-export type GoAHeadingSize = "small" | "medium";
+import type { GoAAccordionHeadingSize, Margins } from "@abgov/common";
 
 interface WCProps extends Margins {
   open?: boolean;
-  headingSize?: GoAHeadingSize;
+  headingSize?: GoAAccordionHeadingSize;
   heading: string;
   secondaryText?: string;
   headingContent?: ReactNode;
@@ -22,7 +21,7 @@ declare global {
 
 export interface GoAAccordionProps extends Margins {
   open?: boolean;
-  headingSize?: GoAHeadingSize;
+  headingSize?: GoAAccordionHeadingSize;
   secondaryText?: string;
   heading: string;
   headingContent?: ReactNode;

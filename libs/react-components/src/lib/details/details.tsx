@@ -1,5 +1,5 @@
+import { Margins } from "@abgov/common";
 import { ReactNode } from "react";
-import { Margins } from "../../common/styling";
 
 interface WCProps extends Margins {
   heading: string;
@@ -22,8 +22,6 @@ export interface GoADetailsProps extends Margins {
   open?: boolean;
   children: ReactNode;
 }
-
-export type DetailsProps = GoADetailsProps;
 
 export function GoADetails(props: GoADetailsProps) {
   return (

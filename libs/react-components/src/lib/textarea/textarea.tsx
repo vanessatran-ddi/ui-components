@@ -1,8 +1,5 @@
+import { GoATextAreaCountBy, Margins } from "@abgov/common";
 import { useEffect, useRef } from "react";
-import { Margins } from "../../common/styling";
-
-
-type CountBy = "character" | "word";
 
 interface WCProps extends Margins {
   ref: React.Ref<HTMLTextAreaElement>;
@@ -14,7 +11,7 @@ interface WCProps extends Margins {
   disabled?: boolean;
   width?: string;
   arialabel?: string;
-  countby?: CountBy;
+  countby?: GoATextAreaCountBy;
   maxcount?: number;
 }
 
@@ -38,7 +35,7 @@ export interface GoATextAreaProps extends Margins {
   width?: string;
   testId?: string;
   ariaLabel?: string;
-  countBy?: CountBy;
+  countBy?: GoATextAreaCountBy;
   maxCount?: number;
 
   onChange: (name: string, value: string) => void;

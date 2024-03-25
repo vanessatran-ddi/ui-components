@@ -17,7 +17,11 @@ export default defineConfig({
     globals: true,
     environment: "jsdom",
     setupFiles: ["vitest.setup.ts"],
-    exclude: ["**/node_modules", "playground", "libs/web-components/node_modules"],
+    exclude: [
+      "**/node_modules", 
+      "playground", 
+      "libs/angular-components",  // angular need to be run through jest
+    ],
     alias: [{ find: /^svelte$/, replacement: "svelte/internal" }],
     reporters: ['default'],
     coverage: {

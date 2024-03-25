@@ -82,7 +82,7 @@ describe("GoADropdown", () => {
       })
     );
     await waitFor(() => {
-      expect(fn).toBeCalledWith("favColor", "blue");
+      expect(fn).toBeCalledWith({ name: "favColor", value: "blue" });
     });
   });
 });

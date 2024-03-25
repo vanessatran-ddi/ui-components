@@ -4,7 +4,7 @@
   # https://devenv.sh/packages/
   packages = [ 
     pkgs.git 
-    pkgs.nodejs_21
+    pkgs.nodejs_20
     pkgs.nodePackages_latest.svelte-language-server
     pkgs.nodePackages_latest.typescript-language-server
     pkgs.vscode-langservers-extracted
