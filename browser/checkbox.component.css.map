@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["playground/angular/src/app/checkbox/checkbox.component.css"],
+  "sourcesContent": [".customized-description-title {\n  font-size: 14px;\n  font-style: italic;\n  color: #bf8d23;\n}\n"],
+  "mappings": ";AAAA,CAAC;AACC,aAAW;AACX,cAAY;AACZ,SAAO;AACT;",
+  "names": []
+}
