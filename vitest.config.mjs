@@ -20,7 +20,8 @@ export default defineConfig({
     exclude: [
       "**/node_modules", 
       "playground", 
-      "libs/angular-components",  // angular need to be run through jest
+      "libs/react-components",    // run react via nx
+      "libs/angular-components",  // run angular via nx
     ],
     alias: [{ find: /^svelte$/, replacement: "svelte/internal" }],
     reporters: ['default'],

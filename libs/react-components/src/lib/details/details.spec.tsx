@@ -11,8 +11,8 @@ describe("Detail", () => {
     );
 
     const el = baseElement.querySelector("goa-details");
-    expect(el.getAttribute("heading")).toBe("The heading");
+    expect(el?.getAttribute("heading")).toBe("The heading");
     expect(baseElement.innerHTML).toContain("The content");
-    expect(el.getAttribute("open")).toBe("true");
+    expect(el?.getAttribute("open")).toBe("true");
   });
 });
