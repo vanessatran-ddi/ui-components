@@ -8,9 +8,9 @@ let fixture: ComponentFixture<GoAAccordion>;
 
 @Component({
   template: `
-    <goa-accordion [heading]="heading" [headingsize]="headingSize">
+    <goax-accordion heading="heading" [headingsize]="headingSize">
       test content
-    </goa-accordion>`
+    </goax-accordion>`
 })
 class TestAccordionComponent {
   heading: string = "Heading";
@@ -34,10 +34,16 @@ describe("Accordion", () => {
     fixture.detectChanges();
     console.log(fixture.nativeElement.innerHTML);
   });
-  it("should render", () => {
+  it("should render", async() => {
     fixture.detectChanges();
-    // debug component html
+    fixture.detectChanges();
+
+    fixture.componentInstance.heading = 'Primeng ROCKS';
+    fixture.detectChanges();
+    console.log(fixture.debugElement.children[0].children[0]);
+
     console.log(fixture.nativeElement.innerHTML);
+    expect(fixture.nativeElement.innerHTML).toMatchSnapshot();
   });
 });
 

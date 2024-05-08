@@ -1,5 +1,5 @@
 import { GoAAccordionHeadingSize, Spacing } from "@abgov/common";
-import { CUSTOM_ELEMENTS_SCHEMA, Component, Input } from "@angular/core";
+import {CUSTOM_ELEMENTS_SCHEMA, Component, Input, OnInit} from "@angular/core";
 
 @Component({
   standalone: true,
@@ -20,9 +20,9 @@ import { CUSTOM_ELEMENTS_SCHEMA, Component, Input } from "@angular/core";
       <ng-content />
     </goa-accordion>
   `,
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class GoAAccordion {
+export class GoAAccordion implements OnInit {
   @Input() heading?: string;
   @Input() secondaryText?: string;
   @Input() testId?: string;
@@ -33,4 +33,7 @@ export class GoAAccordion {
   @Input() mb?: Spacing;
   @Input() ml?: Spacing;
   @Input() mr?: Spacing;
+  public ngOnInit() {
+    console.log("heading is ", this.heading);
+  }
 }
