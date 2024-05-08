@@ -1,4 +1,4 @@
-import { GoATextAreaCountBy } from "@abgov/common";
+import { GoATextAreaCountBy, Spacing } from "@abgov/common";
 import { CUSTOM_ELEMENTS_SCHEMA, Component, EventEmitter, Input, Output } from "@angular/core";
 
 export type GoATextAreaOnChangeDetail = {
@@ -25,10 +25,15 @@ export type GoATextAreaOnKeyPressDetail = {
       [error]="error"
       [disabled]="disabled"
       [width]="width"
-      [testid]="testId"
       [arialabel]="ariaLabel"
       [countby]="countBy"
       [maxcount]="maxCount"
+      [testid]="testId"
+      [mt]="mt"
+      [mb]="mb"
+      [ml]="ml"
+      [mr]="mr"
+
       (_change)="_onChange($event)"
       (_keypress)="_onKeyPress($event)"
     >
@@ -45,10 +50,14 @@ export class GoATextArea {
   @Input() error?: boolean;
   @Input() disabled?: boolean;
   @Input() width?: string;
-  @Input() testId?: string;
   @Input() ariaLabel?: string;
   @Input() countBy?: GoATextAreaCountBy;
   @Input() maxCount?: number;
+  @Input() testId?: string;
+  @Input() mt?: Spacing;
+  @Input() mb?: Spacing;
+  @Input() ml?: Spacing;
+  @Input() mr?: Spacing;
 
   @Output() onChange = new EventEmitter<GoATextAreaOnChangeDetail>();
   @Output() onKeyPress = new EventEmitter<GoATextAreaOnKeyPressDetail>();

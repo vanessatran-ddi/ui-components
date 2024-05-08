@@ -1,4 +1,4 @@
-import { GoATooltipHorizontalAlignment, GoATooltipPosition } from "@abgov/common";
+import { GoATooltipHorizontalAlignment, GoATooltipPosition, Spacing } from "@abgov/common";
 import { CUSTOM_ELEMENTS_SCHEMA, Component, Input } from "@angular/core";
 
 @Component({
@@ -10,6 +10,10 @@ import { CUSTOM_ELEMENTS_SCHEMA, Component, Input } from "@angular/core";
       [content]="content"
       [halign]="hAlign"
       [testid]="testId"
+      [mt]="mt"
+      [mb]="mb"
+      [ml]="ml"
+      [mr]="mr"
     >
       <ng-content /> 
     </goa-tooltip>
@@ -21,5 +25,9 @@ export class GoATooltip {
   @Input() content?: string;
   @Input() hAlign?: GoATooltipHorizontalAlignment;
   @Input() testId?: string;
+  @Input() mt?: Spacing;
+  @Input() mb?: Spacing;
+  @Input() ml?: Spacing;
+  @Input() mr?: Spacing;
 }
 

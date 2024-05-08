@@ -9,6 +9,11 @@ import { CUSTOM_ELEMENTS_SCHEMA, Component, Input } from "@angular/core";
       [gap]="gap"
       [minchildwidth]="minChildWidth"
       [testid]="testId"
+      [mt]="mt"
+      [mb]="mb"
+      [ml]="ml"
+      [mr]="mr"
+
     >
     </goa-grid>
   `,
@@ -18,4 +23,8 @@ export class GoAGrid {
   @Input({ required: true }) minChildWidth!: string;
   @Input() gap?: Spacing;
   @Input() testId?: string;
+  @Input() mt?: Spacing;
+  @Input() mb?: Spacing;
+  @Input() ml?: Spacing;
+  @Input() mr?: Spacing;
 }

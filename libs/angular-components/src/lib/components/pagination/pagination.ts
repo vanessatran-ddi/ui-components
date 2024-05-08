@@ -1,4 +1,4 @@
-import { GoAPaginationVariant } from "@abgov/common";
+import { GoAPaginationVariant, Spacing } from "@abgov/common";
 import { CUSTOM_ELEMENTS_SCHEMA, Component, EventEmitter, Input, Output } from "@angular/core";
 
 export type GoAPaginationOnChangeDetail = {
@@ -15,6 +15,11 @@ export type GoAPaginationOnChangeDetail = {
       [pagenumber]="pageNumber"
       [variant]="variant"
       [testid]="testId"
+      [mt]="mt"
+      [mb]="mb"
+      [ml]="ml"
+      [mr]="mr"
+
       (_change)="_onChange($event)"
     >
     </goa-pagination>
@@ -27,6 +32,10 @@ export class GoAPagination {
   @Input() perPageCount?: number = 10;
   @Input() variant?: GoAPaginationVariant = "all";
   @Input() testId?: string;
+  @Input() mt?: Spacing;
+  @Input() mb?: Spacing;
+  @Input() ml?: Spacing;
+  @Input() mr?: Spacing;
 
   @Output() onChange = new EventEmitter<GoAPaginationOnChangeDetail>();
 

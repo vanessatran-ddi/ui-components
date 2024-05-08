@@ -1,4 +1,4 @@
-import { GoAButtonSize, GoAButtonType, GoAButtonVariant, GoAIconType } from "@abgov/common";
+import { GoAButtonSize, GoAButtonType, GoAButtonVariant, GoAIconType, Spacing } from "@abgov/common";
 import { CUSTOM_ELEMENTS_SCHEMA, Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
@@ -32,10 +32,10 @@ export class GoAButton {
   @Input() leadingIcon?: GoAIconType;
   @Input() trailingIcon?: GoAIconType;
   @Input() testId?: string;
-  @Input() mt?: string;
-  @Input() mb?: string;
-  @Input() ml?: string;
-  @Input() mr?: string;
+  @Input() mt?: Spacing;
+  @Input() mb?: Spacing;
+  @Input() ml?: Spacing;
+  @Input() mr?: Spacing;
 
   @Output() onClick = new EventEmitter();
 

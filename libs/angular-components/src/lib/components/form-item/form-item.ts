@@ -23,16 +23,16 @@ import { CUSTOM_ELEMENTS_SCHEMA, Component, Input } from "@angular/core";
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class GoAFormItem {
-  @Input() mt?: Spacing;
-  @Input() mb?: Spacing;
-  @Input() mr?: Spacing;
-  @Input() ml?: Spacing;
   @Input() label?: string;
   @Input() labelSize?: GoAFormItemLabelSize;
   @Input() helpText?: string;
   @Input() error?: string;
   @Input() requirement?: GoAFormItemRequirement;
   @Input() id?: string;
+  @Input() mt?: Spacing;
+  @Input() mb?: Spacing;
+  @Input() mr?: Spacing;
+  @Input() ml?: Spacing;
 }
 
 

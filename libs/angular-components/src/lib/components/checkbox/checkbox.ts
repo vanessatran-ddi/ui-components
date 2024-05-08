@@ -1,4 +1,4 @@
-import { GoACheckboxOnChangeDetail } from "@abgov/common";
+import { GoACheckboxOnChangeDetail, Spacing } from "@abgov/common";
 import { CUSTOM_ELEMENTS_SCHEMA, Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
@@ -14,6 +14,12 @@ import { CUSTOM_ELEMENTS_SCHEMA, Component, EventEmitter, Input, Output } from "
     [testid]="testId"
     [arialabel]="ariaLabel"
     [description]="description"
+    [testid]="testId"
+    [mt]="mt"
+    [mb]="mb"
+    [ml]="ml"
+    [mr]="mr"
+
     (_change)="_onChange($event)"
   >
     <ng-content />
@@ -30,6 +36,10 @@ export class GoACheckbox {
   @Input() testId?: string;
   @Input() ariaLabel?: string;
   @Input() description?: string;
+  @Input() mt?: Spacing;
+  @Input() mb?: Spacing;
+  @Input() ml?: Spacing;
+  @Input() mr?: Spacing;
 
   @Output() onChange = new EventEmitter<GoACheckboxOnChangeDetail>();
 

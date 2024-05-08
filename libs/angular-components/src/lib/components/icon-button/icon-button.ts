@@ -1,4 +1,4 @@
-import { GoAIconButtonVariant, GoAIconSize, GoAIconType } from "@abgov/common";
+import { GoAIconButtonVariant, GoAIconSize, GoAIconType, Spacing } from "@abgov/common";
 import { CUSTOM_ELEMENTS_SCHEMA, Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
@@ -11,6 +11,12 @@ import { CUSTOM_ELEMENTS_SCHEMA, Component, EventEmitter, Input, Output } from "
       [variant]="variant"
       [title]="title"
       [disabled]="disabled"
+      [testid]="testId"
+      [mt]="mt"
+      [mb]="mb"
+      [ml]="ml"
+      [mr]="mr"
+
       (onClick)="_onClick($event)"
     >
     </goa-icon-button>
@@ -23,6 +29,11 @@ export class GoAIconButton {
   @Input() variant?: GoAIconButtonVariant;
   @Input() title?: string;
   @Input() disabled?: boolean;
+  @Input() testId?: string;
+  @Input() mt?: Spacing;
+  @Input() mb?: Spacing;
+  @Input() ml?: Spacing;
+  @Input() mr?: Spacing;
 
   @Output() onClick = new EventEmitter();
 

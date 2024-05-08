@@ -1,4 +1,4 @@
-import { GoAAccordionHeadingSize } from "@abgov/common";
+import { GoAAccordionHeadingSize, Spacing } from "@abgov/common";
 import { CUSTOM_ELEMENTS_SCHEMA, Component, Input } from "@angular/core";
 
 @Component({
@@ -29,8 +29,8 @@ export class GoAAccordion {
   @Input() open?: boolean;
   @Input() headingSize?: GoAAccordionHeadingSize;
 
-  @Input() mt?: string;
-  @Input() mb?: string;
-  @Input() ml?: string;
-  @Input() mr?: string;
+  @Input() mt?: Spacing;
+  @Input() mb?: Spacing;
+  @Input() ml?: Spacing;
+  @Input() mr?: Spacing;
 }

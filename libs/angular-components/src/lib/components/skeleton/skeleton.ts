@@ -1,4 +1,4 @@
-import { GoASkeletonSize, GoASkeletonType } from "@abgov/common";
+import { GoASkeletonSize, GoASkeletonType, Spacing } from "@abgov/common";
 import { CUSTOM_ELEMENTS_SCHEMA, Component, Input } from "@angular/core";
 
 @Component({
@@ -11,6 +11,10 @@ import { CUSTOM_ELEMENTS_SCHEMA, Component, Input } from "@angular/core";
       [linecount]="lineCount"
       [type]="type"
       [testid]="testId"
+      [mt]="mt"
+      [mb]="mb"
+      [ml]="ml"
+      [mr]="mr"
     >
     </goa-skeleton>
   `,
@@ -22,6 +26,10 @@ export class GoASkeleton {
   @Input() size?: GoASkeletonSize;
   @Input() lineCount?: number;
   @Input() testId?: string;
+  @Input() mt?: Spacing;
+  @Input() mb?: Spacing;
+  @Input() ml?: Spacing;
+  @Input() mr?: Spacing;
 }
 
 

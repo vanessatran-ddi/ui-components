@@ -1,4 +1,4 @@
-import { GoABadgeType } from "@abgov/common";
+import { GoABadgeType, Spacing } from "@abgov/common";
 import { CUSTOM_ELEMENTS_SCHEMA, Component, Input } from "@angular/core";
 
 @Component({
@@ -24,8 +24,8 @@ export class GoABadge {
   @Input() type?: GoABadgeType;
   @Input() content?: string;
   @Input() testId?: string;
-  @Input() mt?: string;
-  @Input() mb?: string;
-  @Input() ml?: string;
-  @Input() mr?: string;
+  @Input() mt?: Spacing;
+  @Input() mb?: Spacing;
+  @Input() ml?: Spacing;
+  @Input() mr?: Spacing;
 }

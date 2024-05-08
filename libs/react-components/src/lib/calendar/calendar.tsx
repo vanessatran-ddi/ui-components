@@ -18,7 +18,6 @@ declare global {
     }
   }
 }
-
 export interface GoACalendarProps extends Margins {
   name?: string;
   value?: Date;
@@ -45,8 +44,8 @@ export function GoACalendar({
     }
     const current = ref.current;
     current.addEventListener("_change", (e: Event) => {
-      onChange({ 
-        name: name || "", 
+      onChange({
+        name: name || "",
         value: (e as CustomEvent).detail.value,
       });
     });

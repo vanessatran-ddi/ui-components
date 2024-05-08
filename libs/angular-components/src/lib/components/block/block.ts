@@ -25,8 +25,8 @@ export class GoABlock {
   @Input() direction?: GoABlockDirection;
   @Input() alignment?: GoABlockAlignment;
   @Input() testId?: string;
-  @Input() mt?: string;
-  @Input() mb?: string;
-  @Input() ml?: string;
-  @Input() mr?: string;
+  @Input() mt?: Spacing;
+  @Input() mb?: Spacing;
+  @Input() ml?: Spacing;
+  @Input() mr?: Spacing;
 }

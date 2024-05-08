@@ -1,5 +1,5 @@
-import { GoACalendarOnChangeDetail } from "@abgov/common";
-import { CUSTOM_ELEMENTS_SCHEMA, Component, EventEmitter, Output } from "@angular/core";
+import { GoACalendarOnChangeDetail, Spacing } from "@abgov/common";
+import { CUSTOM_ELEMENTS_SCHEMA, Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
   standalone: true,
@@ -10,6 +10,11 @@ import { CUSTOM_ELEMENTS_SCHEMA, Component, EventEmitter, Output } from "@angula
       [value]="value"
       [min]="min"
       [max]="max"
+      [testid]="testId"
+      [mt]="mt"
+      [mb]="mb"
+      [ml]="ml"
+      [mr]="mr"
       (_change)="_onChange($event)"
     >
       <ng-content />
@@ -18,10 +23,15 @@ import { CUSTOM_ELEMENTS_SCHEMA, Component, EventEmitter, Output } from "@angula
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class GoACalendar {
-  name?: string;
-  value?: Date;
-  min?: Date;
-  max?: Date;
+  @Input() name?: string;
+  @Input() value?: Date;
+  @Input() min?: Date;
+  @Input() max?: Date;
+  @Input() testId?: string;
+  @Input() mt?: Spacing;
+  @Input() mb?: Spacing;
+  @Input() ml?: Spacing;
+  @Input() mr?: Spacing;
 
   @Output() onChange = new EventEmitter<GoACalendarOnChangeDetail>();
 

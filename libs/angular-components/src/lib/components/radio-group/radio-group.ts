@@ -1,4 +1,4 @@
-import { GoARadioGroupOnChangeDetail, GoARadioGroupOrientation } from "@abgov/common";
+import { GoARadioGroupOnChangeDetail, GoARadioGroupOrientation, Spacing } from "@abgov/common";
 import { CUSTOM_ELEMENTS_SCHEMA, Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
@@ -10,9 +10,14 @@ import { CUSTOM_ELEMENTS_SCHEMA, Component, EventEmitter, Input, Output } from "
       [value]="value"
       [disabled]="disabled"
       [orientation]="orientation"
-      [testid]="testId"
       [error]="error"
       [arialabel]="ariaLabel"
+      [testid]="testId"
+      [mt]="mt"
+      [mb]="mb"
+      [ml]="ml"
+      [mr]="mr"
+
       (_change)="_onChange($event)"
     >
       <ng-content />
@@ -25,9 +30,13 @@ export class GoARadioGroup {
   @Input() value?: string;
   @Input() disabled?: boolean;
   @Input() orientation?: GoARadioGroupOrientation;
-  @Input() testId?: string;
   @Input() error?: boolean;
   @Input() ariaLabel?: string;
+  @Input() testId?: string;
+  @Input() mt?: Spacing;
+  @Input() mb?: Spacing;
+  @Input() ml?: Spacing;
+  @Input() mr?: Spacing;
 
   @Output() onChange = new EventEmitter<GoARadioGroupOnChangeDetail>();
 
