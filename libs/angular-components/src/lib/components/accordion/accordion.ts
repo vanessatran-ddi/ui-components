@@ -10,6 +10,11 @@ import { CUSTOM_ELEMENTS_SCHEMA, Component, Input } from "@angular/core";
       [secondarytext]="secondaryText"
       [open]="open"
       [headingsize]="headingSize"
+      [testid]="testId"
+      [mt]="mt"
+      [mb]="mb"
+      [ml]="ml"
+      [mr]="mr"
     >
       <ng-content select="[slot=headingContent]" />
       <ng-content />
@@ -19,7 +24,13 @@ import { CUSTOM_ELEMENTS_SCHEMA, Component, Input } from "@angular/core";
 })
 export class GoAAccordion {
   @Input() heading?: string;
-  @Input() secondaryText: string = "";
+  @Input() secondaryText?: string;
+  @Input() testId?: string;
   @Input() open?: boolean;
   @Input() headingSize?: GoAAccordionHeadingSize;
+
+  @Input() mt?: string;
+  @Input() mb?: string;
+  @Input() ml?: string;
+  @Input() mr?: string;
 }

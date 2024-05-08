@@ -8,6 +8,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, Component, Input } from "@angular/core";
       [url]="url"
       [heading]="heading"
       [maxcontentwidth]="maxContentWidth"
+      [testid]="testId"
     >
       <ng-content />
     </goa-app-header>
@@ -18,5 +19,6 @@ export class GoAAppHeader {
   @Input() url?: string;
   @Input() heading?: string;
   @Input() maxContentWidth?: string;
+  @Input() testId?: string;
 }
 

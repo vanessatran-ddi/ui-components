@@ -12,6 +12,11 @@ import { CUSTOM_ELEMENTS_SCHEMA, Component, EventEmitter, Input, Output } from "
       [disabled]="disabled"
       [leadingicon]="leadingIcon"
       [trailingicon]="trailingIcon"
+      [testid]="testId"
+      [mt]="mt"
+      [mb]="mb"
+      [ml]="ml"
+      [mr]="mr"
       (_click)="_onClick($event)"
     >
       <ng-content />
@@ -26,6 +31,11 @@ export class GoAButton {
   @Input() disabled?: boolean;
   @Input() leadingIcon?: GoAIconType;
   @Input() trailingIcon?: GoAIconType;
+  @Input() testId?: string;
+  @Input() mt?: string;
+  @Input() mb?: string;
+  @Input() ml?: string;
+  @Input() mr?: string;
 
   @Output() onClick = new EventEmitter();
 

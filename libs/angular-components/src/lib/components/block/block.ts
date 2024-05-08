@@ -10,6 +10,10 @@ import { CUSTOM_ELEMENTS_SCHEMA, Component, Input } from "@angular/core";
       [direction]="direction"
       [alignment]="alignment"
       [testid]="testId"
+      [mt]="mt"
+      [mb]="mb"
+      [ml]="ml"
+      [mr]="mr"
     >
       <ng-content />
     </goa-block>
@@ -21,4 +25,8 @@ export class GoABlock {
   @Input() direction?: GoABlockDirection;
   @Input() alignment?: GoABlockAlignment;
   @Input() testId?: string;
+  @Input() mt?: string;
+  @Input() mb?: string;
+  @Input() ml?: string;
+  @Input() mr?: string;
 }
