@@ -1,5 +1,9 @@
 <svelte:options customElement="goa-chip" />
 
+<script lang="ts" context="module">
+  export type IconTheme = "outline" | "filled" | "sharp";
+</script>
+
 <!-- Script -->
 <script lang="ts">
   import { toBoolean } from "../../common/utils";
@@ -16,6 +20,7 @@
   export let ml: Spacing = null;
 
   export let leadingicon: GoAIconType | null = null;
+  export let icontheme: IconTheme = "outline";
   export let error: string = "false";
   export let deletable: string = "false";
   export let content: string;
@@ -60,7 +65,7 @@
   on:blur={() => (_hovering = false)}
 >
   {#if leadingicon}
-    <goa-icon class="leading-icon" size="medium" type={leadingicon} />
+    <goa-icon class="leading-icon" size="medium" type={leadingicon} theme={icontheme} />
   {/if}
   <div class="text">
     {content}
