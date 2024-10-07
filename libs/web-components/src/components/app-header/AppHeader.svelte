@@ -62,7 +62,6 @@
   const hideMenu = () => (_showMenu = false);
 
   const toggleMobileMenu = () => {
-    toggleMenu();
     if (_hasMobileClickHandler) {
       _mobileToggleButton.dispatchEvent(new CustomEvent("_mobileMenuClick", { composed: true, bubbles: true }));
     }
@@ -213,7 +212,9 @@
       <div class="menu-toggle-area">
         <button on:click={toggleMobileMenu} data-testid="menu-toggle" bind:this={_mobileToggleButton}>
           Menu
-          <goa-icon type={_showMenu ? "chevron-up" : "chevron-down"} mt="1" />
+          {#if !_hasMobileClickHandler}
+            <goa-icon type={_showMenu ? "chevron-up" : "chevron-down"} mt="1" />
+          {/if}
         </button>
       </div>
     {/if}
