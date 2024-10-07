@@ -1,9 +1,10 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 
 interface WCProps {
   open?: string;
   anchor?: string;
   heading?: string;
+  ref: React.RefObject<HTMLElement>;
 }
 
 declare global {
@@ -17,15 +18,37 @@ declare global {
 
 /* eslint-disable-next-line */
 export interface GoADrawerProps {
-  open?: string;
+  open?: boolean;
   anchor?: string;
   heading?: string;
   children?: ReactNode;
+  onClick?: () => void;
 }
 
-export function GoADrawer({ open, anchor, heading, children }: GoADrawerProps): JSX.Element {
+export function GoADrawer({ open, anchor, heading, children, onClick }: GoADrawerProps): JSX.Element {
+  const el = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (!el.current) {
+      return;
+    }
+    if (!onClick) {
+      return;
+    }
+    const current = el.current;
+    const listener = () => {
+      onClick();
+    }
+    current.addEventListener("_click", listener);
+    return () => {
+      current.removeEventListener("_click", listener);
+    };
+  }, [el, onClick]);
   return (
-    <goax-drawer open={open} anchor={anchor} heading={heading}>
+    <goax-drawer
+      ref={el}
+      open={open ? "true" : undefined}
+      anchor={anchor} heading={heading}>
       {children}
     </goax-drawer>
   );

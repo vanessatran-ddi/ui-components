@@ -79,8 +79,8 @@
     class:drawer-open-left={anchor === "left" && open}
     bind:this={_rootEl}
   >
-    <div 
-      class={`drawer-pane drawer-pane-${anchor}`} 
+    <div
+      class={`drawer-pane drawer-pane-${anchor}`}
       bind:this={_contentEl}>
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       <!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -97,8 +97,8 @@
           variant="dark"
         />
       </div>
-      <div 
-        data-testid="drawer-content" 
+      <div
+        data-testid="drawer-content"
         class="drawer-content"
       >
         <goa-scrollable direction="vertical" maxheight={anchor === "bottom" ? "80vh" : "100vh" }>
@@ -158,6 +158,8 @@
 
   .goa-drawer-bottom {
     bottom: var(--drawer-offset);
+    left: 0;
+    right: 0;
   }
   .drawer-pane-bottom {
     width: 100%;
