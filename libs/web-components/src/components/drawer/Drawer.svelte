@@ -67,7 +67,7 @@
   style("opacity", open ? "1": "0"),
 )}>
   <div
-    use:noscroll={{ enable: true }}
+    use:noscroll={{ enable: open }}
     style={styles(
       style("--drawer-offset", `-${_drawerSize}px`),
       style("height", anchor === "bottom" ? "unset" : "100vh"),
