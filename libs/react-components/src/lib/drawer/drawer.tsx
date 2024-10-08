@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 type Anchor = "bottom" | "left" | "right";
 
 interface WCProps {
-  open: boolean;
+  open?: string;
   anchor: Anchor;
   heading: string;
   maxsize?: string;
@@ -22,7 +22,7 @@ declare global {
 }
 
 export interface GoADrawerProps {
-  open: boolean;
+  open?: boolean;
   anchor: Anchor;
   heading: string;
   maxSize?: string;
@@ -47,7 +47,7 @@ export function GoADrawer({ open, anchor, heading, maxSize, testId, children, on
   return (
     <goa-drawer
       ref={el}
-      open={open}
+      open={open ? "true" : undefined}
       anchor={anchor}
       heading={heading}
       maxsize={maxSize}
