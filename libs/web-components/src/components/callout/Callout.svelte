@@ -6,6 +6,7 @@
   import { onMount } from "svelte";
   import { typeValidator } from "../../common/utils";
   import { MOBILE_BP } from "../../common/breakpoints";
+  import type { IconTheme } from "../icon/Icon.svelte";
 
   // Validators
 
@@ -50,8 +51,9 @@
   export let maxwidth: string = "none";
   export let testid: string = "";
   export let arialive: AriaLiveType = "off";
+  export let icontheme: IconTheme = "outline";
 
-  export let iconsize: IconSize | "" = "";
+  export let iconsize: IconSize | "" = ""; // TODO: see if we still need
   // Private
 
   let screenSize = 0;
@@ -102,6 +104,7 @@
     <goa-icon
       type={iconType}
       size={iconSize}
+      theme={icontheme}
     />
   </span>
   <span class="content {type}">
