@@ -135,7 +135,7 @@
 
 <style>
   :host * {
-    --goa-drawer-bg-color: rgba(0,0,0,0.3);
+   --goa-opacity-background-drawer: rgba(0,0,0,0.7);
     --goa-drawer-bottom-shadow: 0 -4px 12px rgba(0,0,0,0.2);
     --goa-drawer-left-shadow: 4px 0 12px rgba(0,0,0,0.2);
     --goa-drawer-right-shadow: -4px 0 12px rgba(0,0,0,0.2);
@@ -149,7 +149,7 @@
     position: fixed;
     inset: 0;
     z-index: 999;
-    background-color: var(--goa-drawer-bg-color);
+    background-color: var(--goa-opacity-background-drawer);
     transition: opacity 200ms ease-out;
   }
 
